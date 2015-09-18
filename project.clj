@@ -10,7 +10,8 @@
                  [net.sf.jasperreports/jasperreports "6.1.0"]
                  [ar.com.fdvs/DynamicJasper "5.0.3"]
 
-                 [org.clojure/java.jdbc "0.3.6"]
-                 [mysql/mysql-connector-java "5.1.35"]]
+                 [org.clojure/java.jdbc "0.4.2"]
+                 ;[mysql/mysql-connector-java "5.1.36"]
+                 [hsqldb/hsqldb "1.8.0.10"]]
   :plugins [[lein-ancient "0.5.5"]]
   :repositories {"fdvsolution.public" "http://nexus.fdvs.com.ar/content/groups/public/"})
