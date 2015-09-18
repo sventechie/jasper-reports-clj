@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [cheshire "5.5.0"]
+                 [clj-time "0.11.0"]
 
                  [net.sf.jasperreports/jasperreports "6.1.0"]
                  [ar.com.fdvs/DynamicJasper "5.0.3"]

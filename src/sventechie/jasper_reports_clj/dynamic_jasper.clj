@@ -1,6 +1,6 @@
 (ns sventechie.jasper-reports-clj.dynamic-jasper
+  (:require [clj-time.core :as t])
   (:import
-    [java.util Date]
     [java.util Map]
     [ar.com.fdvs.dj.core DynamicJasperHelper]
     [ar.com.fdvs.dj.domain DJCalculation]
@@ -37,24 +37,24 @@
 (defn build-report
   "Create Jasper report"
   [file-name parameter-map]
-  (let [report-builder (new FastReportBuilder)]
-    ;; check ReflectiveReportBuilder
-    (build-jrxml file-name parameter-map
-     (.. report-builder
-      ;; column, title, data_type_name, width
-      (addColumn ["State", "state", (:string typemap),30])
-      (addColumn ["Branch", "branch", (:string typemap),30])
-      (addColumn ["Product Line", "productLine", (:string typemap),50])
-      (addColumn ["Item", "item", (:string typemap),50])
-      (addColumn ["Item Code", "id", (:string typemap),30])
-      (addColumn ["Quantity", "quantity", (:string typemap),60,true])
-      (addColumn ["Amount", "amount", (:string typemap),70,true])
-      (addGroups [2])
-      (setTitle ["November \"2014\" sales report"])
-      (setSubtitle [(+ "This report was generated at " (new Date()))])
-      (setPrintBackgroundOnOddRows [true])
-      (setUseFullPageWidth [true])
-      (build [])))))
+  (let [report-builder (new FastReportBuilder)
+        report-object (.. report-builder
+    ;; column, title, data_type_name, width
+    (addColumn "State", "state", (:string typemap), 30)
+    (addColumn "Branch", "branch", (:string typemap), 30)
+    (addColumn "Product Line", "productLine", (:string typemap), 50)
+    (addColumn "Item", "item", (:string typemap), 50)
+    (addColumn "Item Code", "id", (:string typemap), 30)
+    (addColumn "Quantity", "quantity", (:long typemap), 60, true)
+    (addColumn "Amount", "amount", (:float typemap), 70, true)
+    (addGroups 2)
+    (setTitle "November \"2014\" sales report")
+    (setSubtitle (str "This report was generated at " (t/date-time 2014 11 01)))
+    (setPrintBackgroundOnOddRows true)
+    (setUseFullPageWidth true)
+    (build))]
+
+    (build-jrxml report-object file-name parameter-map)))
 
 
 ;(defn fastReportTest-main []
