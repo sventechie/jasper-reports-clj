@@ -7,9 +7,9 @@
                  [cheshire "5.4.0"]
 
                  [net.sf.jasperreports/jasperreports "6.0.3"]
-                 [ar.com.fdvs/DynamicJasper "5.0.2"]
+                 [ar.com.fdvs/DynamicJasper "5.0.3"]
 
                  [org.clojure/java.jdbc "0.3.6"]
                  [mysql/mysql-connector-java "5.1.35"]]
   :plugins [[lein-ancient "0.5.5"]]
-  :repositories {"fdvsolution.public" "http://archiva.fdvs.com.ar/repository/public1/"})
+  :repositories {"fdvsolution.public" "http://nexus.fdvs.com.ar/content/groups/public/"})
