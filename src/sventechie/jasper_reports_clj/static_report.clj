@@ -21,8 +21,7 @@
 
 ;(def db-spec {:subprotocol "mysql" :subname "//127.0.0.1:3306/report_test?zeroDateTimeBehavior=convertToNull" :user "clojure_test" :password "clojure_test"})
 
-;(def report-dir "templates/reports/")
-(def report-dir "/Users/svenpedersen/Documents/JaspersoftWorkspace/Royalties Summary/")
+(def report-dir "templates/reports/")
 
 (def mock-data {:id 42 :name "Some Company" :project_number 99876})
 

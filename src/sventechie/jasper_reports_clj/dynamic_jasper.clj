@@ -12,6 +12,8 @@
     [ar.com.fdvs.dj.domain.builders FastReportBuilder])
   (:gen-class))
 
+(def xml-encoding "UTF-8")
+
 (def typemap
   {:boolean "java.lang.Boolean"
    :byte "java.lang.Byte"
@@ -27,12 +29,10 @@
 ;DynamicJasperHelper.generateJRXML(dr, new ClassicLayoutManager() , parameters, "UTF-8", destinationFilePath);
 (defn build-jrxml
   "Build JRxml file from DynamicJasper report object"
-  [output-file parameter-map]
-  (. DynamicJasperHelper
-     (generateJRXML
-      (report-object
-      (new ClassicLayoutManager)
-       parameter-map "UTF-8" output-file))))
+  [report-object output-file parameter-map]
+  (let [layout-manager (new ClassicLayoutManager)]
+    (DynamicJasperHelper/generateJRXML
+      report-object layout-manager parameter-map xml-encoding output-file)))
 
 (defn build-report
   "Create Jasper report"
@@ -55,9 +55,6 @@
       (setPrintBackgroundOnOddRows [true])
       (setUseFullPageWidth [true])
       (build [])))))
-
-
-
 
 
 ;(defn fastReportTest-main []
