@@ -30,9 +30,10 @@
 (defn build-jrxml
   "Build JRxml file from DynamicJasper report object"
   [report-object output-file parameter-map]
-  (let [layout-manager (new ClassicLayoutManager)]
+  (let [layout-manager (new ClassicLayoutManager)
+        parameters (java.util.HashMap. parameter-map)]
     (DynamicJasperHelper/generateJRXML
-      report-object layout-manager parameter-map xml-encoding output-file)))
+      report-object layout-manager parameters xml-encoding output-file)))
 
 (defn build-report
   "Create Jasper report"
